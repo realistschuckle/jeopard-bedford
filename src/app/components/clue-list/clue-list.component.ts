@@ -10,9 +10,21 @@ import { FAKE_DATA } from '../../shared/domain/fake-data';
   styleUrls: ['./clue-list.component.scss']
 })
 export class ClueListComponent implements OnInit {
-  public clues: Clue[];
+  private _clues: Clue[];
 
   public ngOnInit(): void {
-    this.clues = FAKE_DATA;
+    this._clues = FAKE_DATA;
+  }
+
+  public get cluesOver200() {
+    return this._clues.filter(clue => clue.value > 200);
+  }
+
+  public get clues(): Clue[] {
+    return this._clues;
+  }
+
+  public someClues(): Clue[] {
+    return this._clues;
   }
 }
