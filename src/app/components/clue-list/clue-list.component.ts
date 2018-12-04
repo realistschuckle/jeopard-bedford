@@ -3,6 +3,7 @@ import {
 } from '@angular/core';
 import { Clue } from '../../shared/domain/clue';
 import { FAKE_DATA } from '../../shared/domain/fake-data';
+import { ClueService } from '../../shared/services/clue.service';
 
 @Component({
   selector: 'app-clue-list',
@@ -13,8 +14,18 @@ export class ClueListComponent implements OnInit {
   private _clues: Clue[];
   public selectedClue: Clue;
 
+  constructor(
+    private service: ClueService
+  ) {}
+
   public ngOnInit(): void {
-    this._clues = FAKE_DATA;
+    this._clues = [];
+    this.service
+      .getClues()
+      .subscribe(
+        clues => this._clues = clues, // success handler, I'll have some clues
+        error => console.error(error) // error handler, something went wrong
+      );
   }
 
   public deselectClue(): void {
