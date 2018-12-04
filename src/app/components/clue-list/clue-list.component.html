@@ -14,4 +14,5 @@
 </table>
 
 <app-clue-detail *ngIf="selectedClue"
-                 [clue]="selectedClue"></app-clue-detail>
+                 [clue]="selectedClue"
+                 (wantsClose)="deselectClue()"></app-clue-detail>

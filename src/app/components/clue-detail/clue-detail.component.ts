@@ -1,5 +1,5 @@
 import {
-  Component, Input
+  Component, Input, Output, EventEmitter
 } from '@angular/core';
 import { Clue } from '../../shared/domain/clue';
 
@@ -11,4 +11,17 @@ import { Clue } from '../../shared/domain/clue';
 export class ClueDetailComponent {
   @Input()
   public clue: Clue;
+
+  @Output()
+  public wantsClose: EventEmitter<void>;
+
+  constructor() {
+    this.wantsClose = new EventEmitter<void>();
+  }
+
+  public close(): void {
+    this.clue.question = 'WTF???';
+    this.clue.value = 888;
+    this.wantsClose.next();
+  }
 }

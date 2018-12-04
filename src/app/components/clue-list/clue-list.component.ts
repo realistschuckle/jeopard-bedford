@@ -17,6 +17,10 @@ export class ClueListComponent implements OnInit {
     this._clues = FAKE_DATA;
   }
 
+  public deselectClue(): void {
+    this.selectedClue = undefined;
+  }
+
   public handleClueClick(clue: Clue) {
     this.selectedClue = clue;
   }
