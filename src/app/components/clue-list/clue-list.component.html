@@ -1,0 +1,14 @@
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let clue of clues">
+      <td>{{ clue.category.title }}</td>
+      <td>${{ clue.value }}</td>
+    </tr>
+  </tbody>
+</table>
