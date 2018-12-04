@@ -1,0 +1,13 @@
+<dl>
+  <dt [title]="clue.id">Value</dt>
+  <dd>${{ clue.value }}</dd>
+  <dt>Question</dt>
+  <dd>{{ clue.question }}</dd>
+  <dt>Category</dt>
+  <dd>{{ clue.category.title }}</dd>
+  <dt>Invalid?</dt>
+  <dd>
+    <span *ngIf="clue.invalid_count">Yes</span>
+    <span *ngIf="!clue.invalid_count">No</span>
+  </dd>
+</dl>
