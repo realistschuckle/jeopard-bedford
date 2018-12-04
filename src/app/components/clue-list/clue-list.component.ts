@@ -11,9 +11,14 @@ import { FAKE_DATA } from '../../shared/domain/fake-data';
 })
 export class ClueListComponent implements OnInit {
   private _clues: Clue[];
+  public selectedClue: Clue;
 
   public ngOnInit(): void {
     this._clues = FAKE_DATA;
+  }
+
+  public handleClueClick(clue: Clue) {
+    this.selectedClue = clue;
   }
 
   public get cluesOver200() {

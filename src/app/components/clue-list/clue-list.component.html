@@ -7,8 +7,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let clue of cluesOver200">
-      <td>{{ clue.category.title }}</td>
-      <td>${{ clue.value }}</td>
+      <td [title]="clue.category.title">{{ clue.category.title }}</td>
+      <td (click)="handleClueClick(clue)">${{ clue.value }}</td>
     </tr>
   </tbody>
 </table>
+
+<app-clue-detail *ngIf="selectedClue"
+                 [clue]="selectedClue"></app-clue-detail>
