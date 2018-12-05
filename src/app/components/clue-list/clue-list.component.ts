@@ -68,6 +68,18 @@ export class ClueListComponent implements OnInit {
     }
   }
 
+  public deleteClue() {
+    this.service
+      .deleteClue(this.selectedClue.id)
+      .subscribe(
+        () => {
+          this.getClues();
+          this.selectedClue = undefined;
+          this.isEditing = false;
+        }
+      );
+  }
+
   public deselectClue(): void {
     this.selectedClue = undefined;
   }

@@ -28,4 +28,10 @@ export class ClueService {
       .map(response => response.json());
   }
 
+  public deleteClue(id: number): Observable<void> {
+    return this.http
+      .delete(`https://jservice.xyz/api/clues/${id}`)
+      .map(response => {});
+  }
+
 }
