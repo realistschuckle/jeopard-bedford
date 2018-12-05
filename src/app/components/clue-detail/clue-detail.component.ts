@@ -20,8 +20,6 @@ export class ClueDetailComponent {
   }
 
   public close(): void {
-    this.clue.question = 'WTF???';
-    this.clue.value = 888;
     this.wantsClose.next();
   }
 }

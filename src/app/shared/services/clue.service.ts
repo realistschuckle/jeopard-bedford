@@ -12,7 +12,7 @@ export class ClueService {
 
   public getClues(): Observable<Clue[]> {
     return this.http
-      .get('https://localhost:8443/http://jservice.io/api/clues')
+      .get('https://jservice.xyz/api/clues')
       .map(response => response.json());
   }
 
