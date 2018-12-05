@@ -12,6 +12,7 @@ import { ClueService } from '../../shared/services/clue.service';
 export class ClueListComponent implements OnInit {
   private _clues: Clue[];
   public selectedClue: Clue;
+  public isEditing: boolean;
 
   constructor(
     private service: ClueService
@@ -26,17 +27,45 @@ export class ClueListComponent implements OnInit {
     this.service
       .getClues()
       .subscribe(
-        clues => this._clues = clues, // success handler, I'll have some clues
+        clues => this._clues = clues.filter(clue => !clue.invalid_count), // success handler, I'll have some clues
         error => console.error(error) // error handler, something went wrong
       );
   }
 
-  public clueCreated(clue: Clue) {
-    this.service
-      .createClue(clue)
-      .subscribe(
-        newClue => this.getClues()
-      );
+  public updateClue(clue: Clue) {
+    if (clue.id) {
+      this.service
+        .updateClue(clue)
+        .subscribe(
+          newClue => {
+            this.getClues();
+            this.selectedClue = undefined;
+            this.isEditing = false;
+          }
+        );
+    } else {
+      this.service
+        .createClue(clue)
+        .subscribe(
+          newClue => {
+            this.getClues();
+            this.selectedClue = undefined;
+            this.isEditing = false;
+          }
+        );
+    }
+  }
+
+  public showEdit() {
+    this.isEditing = true;
+  }
+
+  public showDetails() {
+    if (this.selectedClue.id) {
+      this.isEditing = false;
+    } else {
+      this.selectedClue = undefined;
+    }
   }
 
   public deselectClue(): void {
@@ -45,6 +74,11 @@ export class ClueListComponent implements OnInit {
 
   public handleClueClick(clue: Clue) {
     this.selectedClue = clue;
+  }
+
+  public showCreateForm() {
+    this.selectedClue = new Clue();
+    this.isEditing = true;
   }
 
   public get cluesOver200() {

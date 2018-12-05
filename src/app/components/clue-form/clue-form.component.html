@@ -16,11 +16,15 @@
              required
              class="sky-form-control"
              type="number" placeholder="value" >
-      <input name="category_id"
+      <input *ngIf="!clue.id"
+             name="category_id"
              [(ngModel)]="clue.category_id"
              required
              class="sky-form-control"
              type="number" placeholder="category id, just guess one" >
-      <button>Create clue</button>
+      <button *ngIf="clue.id">Update clue</button>
+      <button *ngIf="!clue.id">Create clue</button>
+      <button *ngIf="clue.id" type="button" (click)="deleteTheClue()">Delete</button>
+      <button type="button" (click)="cancelFormInteraction()">Cancel</button>
     </fieldset>
   </form>

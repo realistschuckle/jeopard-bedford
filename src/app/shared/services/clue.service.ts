@@ -22,4 +22,10 @@ export class ClueService {
       .map(response => response.json());
   }
 
+  public updateClue(clue: Clue): Observable<Clue> {
+    return this.http
+      .put(`https://jservice.xyz/api/clues/${clue.id}`, clue)
+      .map(response => response.json());
+  }
+
 }

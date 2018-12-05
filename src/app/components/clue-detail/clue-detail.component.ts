@@ -15,11 +15,19 @@ export class ClueDetailComponent {
   @Output()
   public wantsClose: EventEmitter<void>;
 
+  @Output()
+  public wantsEdit: EventEmitter<void>;
+
   constructor() {
     this.wantsClose = new EventEmitter<void>();
+    this.wantsEdit = new EventEmitter<void>();
   }
 
   public close(): void {
     this.wantsClose.next();
+  }
+
+  public closeForEdit(): void {
+    this.wantsEdit.next();
   }
 }

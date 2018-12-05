@@ -1,9 +1,7 @@
 import {
-  Component, OnInit, EventEmitter, Output
+  Component, OnInit, EventEmitter, Output, Input
 } from '@angular/core';
-import { SkyAuthHttp } from '@blackbaud/skyux-builder/runtime';
 import { Clue } from '../../shared/domain/clue';
-import { ClueService } from "../../shared/services/clue.service";
 
 @Component({
   selector: 'app-clue-form',
@@ -11,20 +9,42 @@ import { ClueService } from "../../shared/services/clue.service";
   styleUrls: ['./clue-form.component.scss']
 })
 export class ClueFormComponent implements OnInit {
+  @Input()
   public clue: Clue;
 
+  @Input()
+  public isEditing: boolean;
+
   @Output()
-  public clueCreated: EventEmitter<Clue>;
+  public wantsUpdate: EventEmitter<Clue>;
+
+  @Output()
+  public cancelUpdate: EventEmitter<void>;
+
+  @Output()
+  public pleaseDelete: EventEmitter<number>;
 
   constructor() {
-    this.clueCreated = new EventEmitter<Clue>();
+    this.wantsUpdate = new EventEmitter<Clue>();
+    this.cancelUpdate = new EventEmitter<void>();
+    this.pleaseDelete = new EventEmitter<number>();
   }
 
   public ngOnInit(): void {
-   this.clue = new Clue();
+    if (!this.isEditing) {
+      this.clue = new Clue();
+    }
   }
 
   public createClue() {
-    this.clueCreated.next(this.clue);
+    this.wantsUpdate.next(this.clue);
+  }
+
+  public cancelFormInteraction() {
+    this.cancelUpdate.next();
+  }
+
+  public deleteTheClue() {
+    this.pleaseDelete.next(this.clue.id);
   }
 }

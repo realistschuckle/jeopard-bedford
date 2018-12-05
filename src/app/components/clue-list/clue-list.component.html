@@ -1,5 +1,4 @@
-<app-clue-form (clueCreated)="clueCreated($event)"></app-clue-form>
-
+<button (click)="showCreateForm()">Create a clue</button>
 <table>
   <thead>
     <tr>
@@ -15,6 +14,13 @@
   </tbody>
 </table>
 
-<app-clue-detail *ngIf="selectedClue"
+<app-clue-detail *ngIf="selectedClue && !isEditing"
                  [clue]="selectedClue"
+                 (wantsEdit)="showEdit()"
                  (wantsClose)="deselectClue()"></app-clue-detail>
+<app-clue-form *ngIf="selectedClue && isEditing"
+               [clue]="selectedClue"
+               [isEditing]="isEditing"
+               (cancelUpdate)="showDetails()"
+               (pleaseDelete)="deleteClue()"
+               (wantsUpdate)="updateClue($event)"></app-clue-form>

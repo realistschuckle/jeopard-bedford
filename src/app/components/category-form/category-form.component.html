@@ -7,6 +7,9 @@
            class="sky-form-control"
            #title
            type="text" placeholder="title" >
+    <div *ngIf="title.invalid && (title.dirty || title.touched)">
+      C'mon. Gimme a nice value.
+    </div>
     <!-- input #hello  // Is a variable name scoped to the template
            name="key1" // Is an HTML attribute used by Angular as an id
            [(ngModel)]="category.title" // Is the property in the component to bind to
