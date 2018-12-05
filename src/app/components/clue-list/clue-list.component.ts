@@ -13,14 +13,20 @@ export class ClueListComponent implements OnInit {
   private _clues: Clue[];
   public selectedClue: Clue;
   public isEditing: boolean;
+  public isLoading: boolean;
 
   constructor(
     private service: ClueService
-  ) {}
+  ) {
+    console.log('ClueList', this.service.myId);
+  }
 
   public ngOnInit(): void {
     this._clues = [];
     this.getClues();
+    this.service
+      .isLoading()
+      .subscribe(isLoading => this.isLoading = isLoading);
   }
 
   public getClues() {
