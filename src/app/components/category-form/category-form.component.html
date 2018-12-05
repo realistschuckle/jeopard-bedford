@@ -1,0 +1,16 @@
+<form (submit)="createCategory()">
+  <fieldset>
+    <legend>Create a new category</legend>
+    <input name="title"
+           [(ngModel)]="category.title"
+           required
+           class="sky-form-control"
+           #title
+           type="text" placeholder="title" >
+    <!-- input #hello  // Is a variable name scoped to the template
+           name="key1" // Is an HTML attribute used by Angular as an id
+           [(ngModel)]="category.title" // Is the property in the component to bind to
+           type="text" placeholder="title" -->
+    <button>Create category</button>
+  </fieldset>
+</form>

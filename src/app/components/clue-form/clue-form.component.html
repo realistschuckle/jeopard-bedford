@@ -1,0 +1,26 @@
+<form (submit)="createClue()">
+    <fieldset>
+      <legend>Create a new clue</legend>
+      <input name="answer"
+             [(ngModel)]="clue.answer"
+             required
+             class="sky-form-control"
+             type="text" placeholder="answer" >
+      <input name="question"
+             [(ngModel)]="clue.question"
+             required
+             class="sky-form-control"
+             type="text" placeholder="question" >
+      <input name="value"
+             [(ngModel)]="clue.value"
+             required
+             class="sky-form-control"
+             type="number" placeholder="value" >
+      <input name="category_id"
+             [(ngModel)]="clue.category_id"
+             required
+             class="sky-form-control"
+             type="number" placeholder="category id, just guess one" >
+      <button>Create clue</button>
+    </fieldset>
+  </form>

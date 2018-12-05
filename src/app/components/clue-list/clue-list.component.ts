@@ -19,11 +19,23 @@ export class ClueListComponent implements OnInit {
 
   public ngOnInit(): void {
     this._clues = [];
+    this.getClues();
+  }
+
+  public getClues() {
     this.service
       .getClues()
       .subscribe(
         clues => this._clues = clues, // success handler, I'll have some clues
         error => console.error(error) // error handler, something went wrong
+      );
+  }
+
+  public clueCreated(clue: Clue) {
+    this.service
+      .createClue(clue)
+      .subscribe(
+        newClue => this.getClues()
       );
   }
 
