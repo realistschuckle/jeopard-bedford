@@ -2,7 +2,6 @@ import {
   Component, OnInit
 } from '@angular/core';
 import { Clue } from '../../shared/domain/clue';
-import { FAKE_DATA } from '../../shared/domain/fake-data';
 import { ClueService } from '../../shared/services/clue.service';
 
 @Component({
