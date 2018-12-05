@@ -1,14 +1,14 @@
 {
   "example_string": {
-    "message": "This is an example string",
+    "message": "Das ist ein examplen stringen.",
     "_description": "The _description property gives context to the translator as to how the string is used in the product"
   },
   "app_nav_clues": {
-    "message": "Clues",
+    "message": "Klüs",
     "_description": "The text for the Clues top-level navigation item"
   },
   "app_nav_home": {
-    "message": "Home",
+    "message": "Haus",
     "_description": "The text for the Home top-level navigation item"
   },
   "home_title": {

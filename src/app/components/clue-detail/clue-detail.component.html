@@ -1,7 +1,7 @@
 <a (click)="close()">Close me</a>
 <a (click)="closeForEdit()">Show Edit Form</a>
 <dl>
-  <dt [title]="clue.id">Value</dt>
+  <dt [title]="clue?.id">Value</dt>
   <dd>${{ clue.value }}</dd>
   <dt>Question</dt>
   <dd>{{ clue.question }}</dd>

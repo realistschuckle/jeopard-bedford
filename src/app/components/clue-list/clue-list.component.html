@@ -1,4 +1,5 @@
-<button (click)="showCreateForm()">Create a clue</button>
+<a [skyAppLink]="['new']">Create new clue</a>
+<button (click)="goToNewForm()">Go to create page</button>
 <table>
   <thead>
     <tr>
@@ -13,16 +14,5 @@
     </tr>
   </tbody>
 </table>
-
-<app-clue-detail *ngIf="selectedClue && !isEditing"
-                 [clue]="selectedClue"
-                 (wantsEdit)="showEdit()"
-                 (wantsClose)="deselectClue()"></app-clue-detail>
-<app-clue-form *ngIf="selectedClue && isEditing"
-               [clue]="selectedClue"
-               [isEditing]="isEditing"
-               (cancelUpdate)="showDetails()"
-               (pleaseDelete)="deleteClue()"
-               (wantsUpdate)="updateClue($event)"></app-clue-form>
 
 <sky-wait [isWaiting]="isLoading" [isFullPage]="true"></sky-wait>

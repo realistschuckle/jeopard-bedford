@@ -10,4 +10,8 @@ export class Clue {
   public value: number;
   public category: Category;
   public invalid_count?: number;
+
+  constructor() {
+    this.category = new Category();
+  }
 }

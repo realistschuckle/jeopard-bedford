@@ -1,6 +1,7 @@
 import {
   Component, OnInit
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Clue } from '../../shared/domain/clue';
 import { ClueService } from '../../shared/services/clue.service';
 
@@ -16,7 +17,8 @@ export class ClueListComponent implements OnInit {
   public isLoading: boolean;
 
   constructor(
-    private service: ClueService
+    private service: ClueService,
+    private router: Router
   ) {
     console.log('ClueList', this.service.myId);
   }
@@ -27,6 +29,10 @@ export class ClueListComponent implements OnInit {
     this.service
       .isLoading()
       .subscribe(isLoading => this.isLoading = isLoading);
+  }
+
+  public goToNewForm(): void {
+    this.router.navigate(['clues', 'new']);
   }
 
   public getClues() {
@@ -91,7 +97,9 @@ export class ClueListComponent implements OnInit {
   }
 
   public handleClueClick(clue: Clue) {
-    this.selectedClue = clue;
+    // navigate to /clues/:id
+    // this.selectedClue = clue;
+    this.router.navigate(['clues', clue.id]);
   }
 
   public showCreateForm() {

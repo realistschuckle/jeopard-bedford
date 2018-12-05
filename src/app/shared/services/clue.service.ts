@@ -20,6 +20,18 @@ export class ClueService {
     return this._isLoading;
   }
 
+  public getClue(id: string): Observable<Clue> {
+    this._isLoading.next(true);
+    return this.http
+      .get(`https://jservice.xyz/api/clues/${id}`)
+      .map(response => response.json())
+      .do(() => this._isLoading.next(false))
+      .catch((err: any) => {
+        this._isLoading.next(false);
+        return Observable.of(err);
+      });
+  }
+
   public getClues(): Observable<Clue[]> {
     this._isLoading.next(true);
     return this.http
